@@ -1,0 +1,134 @@
+<br>
+<main class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-8">
+      <div class="card">
+        <div class="card-header">Register</div>
+        <div class="card-body">
+            <form #registerForm="ngForm" class="form" name="regisetrForm" (ngSubmit)="registerForm.form.valid && OnSubmit()" >
+                <div class="form-group row">
+                    <label for="full_name" class="col-md-4 col-form-label text-md-right">Full Name</label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" name="FullName" [(ngModel)]="model.FullName" #FullName="ngModel" required>
+
+                        <div class="invalid" *ngIf="registerForm.submitted && FullName.invalid">
+                          <div class="error-msg alert alert-danger" *ngIf="FullName.errors">
+                            Full Name is required
+                          </div>
+                        </div>
+                    </div>
+                    
+                </div>
+      
+                <div class="form-group row">
+                    <label for="Email" class="col-md-4 col-form-label text-md-right">E-Mail Address</label>
+                    <div class="col-md-6">
+                        <input type="email" class="form-control" name="Email" [(ngModel)]="model.Email" #Email="ngModel"
+                        pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required >
+                        
+                        <div class="invalid" *ngIf="registerForm.submitted && Email.invalid" >
+                          <div class="error-msg alert alert-danger" *ngIf="!Email.valid">
+                            Email is not valid
+                          </div>
+                          <div class="error-msg alert alert-danger" *ngIf="Email.errors">
+                            Email is required
+                          </div>
+                        </div>
+                    </div>
+                    
+                </div>
+      
+                <div class="form-group row">
+                    <label for="user_name" class="col-md-4 col-form-label text-md-right">Address</label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" name="Address" [(ngModel)]="model.Address" #Address="ngModel" required>
+
+                        <div class="invalid" *ngIf="registerForm.submitted && Address.invalid">
+                          <div class="error-msg alert alert-danger" *ngIf="Address.errors">
+                            Address is required
+                          </div>
+                        </div>
+                    </div>
+                    
+                </div>
+      
+                <div class="form-group row">
+                    <label for="phone_number" class="col-md-4 col-form-label text-md-right">Mobile</label>
+                    <div class="col-md-6">
+                        <input type="text" class="form-control" name="Mobile" [(ngModel)]="model.Mobile" #Mobile="ngModel" required>
+                        <div class="invalid" *ngIf="registerForm.submitted && Mobile.invalid">
+                          <div class="error-msg alert alert-danger" *ngIf="Mobile.errors">
+                            Mobile is required
+                          </div>
+                        </div>
+                    </div>
+                    
+                </div>
+      
+                <div class="form-group row">
+                    <label for="present_address" class="col-md-4 col-form-label text-md-right">Gender</label>
+                    <div class="col-md-6">
+                      <mat-form-field appearance="fill">
+                        <mat-label>Gender</mat-label>
+                        <mat-select ngModel [(value)]="model.Gender" name="gender" 
+                            #gender="ngModel" required>
+                          <mat-option [value]="genders[0]">Male</mat-option>
+                          <mat-option [value]="genders[1]">Female</mat-option>
+                        </mat-select>
+                      </mat-form-field>
+                      <div *ngIf="registerForm.submitted">
+                        <div class="error-msg alert alert-danger" *ngIf="gender.invalid">
+                          Gender is required
+                        </div>
+                      </div>
+                    </div>
+                </div>
+      
+                <div class="form-group row">
+                  <label for="present_address" class="col-md-4 col-form-label text-md-right">BirthDate</label>
+                  <div class="col-md-6">
+                    <mat-form-field appearance="fill">
+                      <mat-label>Choose a date</mat-label>
+                    <!-- #docregion toggle -->
+                      <input id="birthdate" name="birthdate" matInput [max]="endDate" [matDatepicker]="picker" [(ngModel)]="model.BirthDate">
+                      <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                      <mat-datepicker #picker></mat-datepicker>
+                    <!-- #enddocregion toggle -->
+                    </mat-form-field>
+                  </div>
+                </div>
+      
+                <div class="form-group row">
+                    <label for="nid_number" class="col-md-4 col-form-label text-md-right">Password</label>
+                    <div class="col-md-6">
+                      <input type="password" id="password" class="form-control" #password="ngModel" placeholder="Enter password"
+                        pattern="^(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,20}$" name="password"
+                          [(ngModel)]="model.Password" required />
+                
+                    
+                      <div class="invalid" *ngIf="registerForm.submitted && password.invalid" >
+                        <div class="error-msg alert alert-danger" *ngIf="password.invalid">
+                          Password must be a string with minimum length of 8 and maximum of 20 <br />
+                          Password must have at least one non alphanumeric character. <br />
+                          Password must have at least one lowercase ('a'-'z'). <br />
+                          Password must have at least one uppercase ('A'-'Z').
+                        </div>
+                        <div class="error-msg alert alert-danger" *ngIf="password.errors">
+                          Password is required
+                        </div>
+                      </div>
+                    </div>
+                </div>
+      
+                <div class="col-md-6 offset-md-4">
+                    <button type="submit" class="btn btn-primary">
+                    Register
+                    </button>
+                </div>
+              </form>
+          </div>
+            
+        </div>
+    </div>
+  </div>
+</main>

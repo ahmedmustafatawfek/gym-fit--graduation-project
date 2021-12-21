@@ -1,0 +1,102 @@
+<div class="main-content">
+  <div class="">
+    <a class="btn btn-danger" [routerLink]="'/Gyms/Add'"> Add New Gym</a>
+    
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered table-hover table-striped table-sm text-center">
+        <thead class="thead-dark center">
+          <tr>
+            <th>
+              Name
+            </th>
+            <th>
+              Description
+            </th>
+            <th>
+              Address
+            </th>
+            <th>
+              Mobile
+            </th>
+            <th>
+              Price
+            </th>
+            <th>
+              Deleted
+            </th>
+            <th>
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let gym of gyms">
+            <td>
+              {{gym.Name}}
+            </td>
+            <td>
+              {{gym.Description}}
+            </td>
+            <td>
+              {{gym.Address}}
+            </td>
+            <td>
+              {{gym.Mobile}}
+            </td>
+            <td>
+              {{gym.Price}}
+            </td>
+            <td>
+              {{gym.Deleted ? "Deleted": ""}}
+            </td>
+            <td>
+              <div>
+                <button class="icon" style="background-color: cadetblue;" 
+                  (click)="viewImage(gym.GymImage)" title="View Image">
+                    <i class="fa fa-eye" aria-hidden="true"></i></button>
+
+                <button [routerLink]="['/Gyms/Edit',  gym.ID]" class="icon btn-primary" title="Edit">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+
+           
+
+                <button *ngIf="gym.Deleted" class="icon btn-success"
+                  mwlConfirmationPopover
+                  popoverTitle="Revert Confirmation"
+                  popoverMessage="Are you sure you want to Restore this Gym ?"
+                  placement="left"
+                  (confirm)="DeleteGym(gym.ID)"
+                  (cancel)="cancelClicked = true"
+                  confirmButtonType='success'
+                  title="Restore">
+                  <i class="fa fa-retweet" aria-hidden="true"></i>
+                </button>
+                <button *ngIf="!gym.Deleted" class="icon btn-danger" mwlConfirmationPopover
+                        popoverTitle="Delete Confirmation"
+                        popoverMessage="Are you sure you want to delete this Gym ?"
+                        placement="left"
+                        (confirm)="DeleteGym(gym.ID)"
+                        (cancel)="cancelClicked = true"
+                        title="Delete">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<jw-modal id="view-Image">
+  <div class="card" >
+    <div class="card-body text-center">
+      <div >
+        <img [src]="url" width="720" height ="1024">
+      </div>
+    </div>
+  </div>
+</jw-modal>

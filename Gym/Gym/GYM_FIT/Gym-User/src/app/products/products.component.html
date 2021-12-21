@@ -1,0 +1,41 @@
+<div class="main-content">
+  <br>
+  <div class="form-group row text-center">
+    <div class="col">
+      <label for="Cat">Category</label> &nbsp;&nbsp;
+      <mat-form-field appearance="fill">
+        <mat-label>Category</mat-label>
+        <mat-select ngModel [(value)]="catID" name="Cat" (selectionChange)="filterCategories()"
+            #Cat="ngModel" required>
+            <mat-option [value]="0">View All</mat-option>
+          <mat-option *ngFor="let cat of categories" [value]="cat.ID">{{cat.Name}}</mat-option>
+        </mat-select>
+      </mat-form-field>
+    </div>
+    <div class="col form-group">
+      <label for="search">Search: </label>
+      <input id="search" class="" type="text" ngModel [(ngModel)]="search" (input)="Search()">
+    </div>
+  </div>
+  
+  <div class="container">
+    <div class="row">
+      <div *ngFor="let product of products" class="col-lg-2 col-md-3 col-sm-6">
+        <div class="card mb-4">
+          <div class="card-img-wrapper">
+            <img height="200" class="card-img-top" src="{{imageUrl+product.ProductImage}}" alt="">
+          </div>
+          <div class="card-body p-1">
+            <h3 class="card-title text-center mb-1"><i class="fa fa-item"></i>
+              {{product.Name}}
+            </h3>
+            <p class="card-text text-muted text-center">{{product.Price}} EGP</p>
+            <div class="text-center">
+              <button class="btn btn-primary" (click)="AddToCart(product.ID)"><i class="fa fa-cart-plus"></i> Add to cart</button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

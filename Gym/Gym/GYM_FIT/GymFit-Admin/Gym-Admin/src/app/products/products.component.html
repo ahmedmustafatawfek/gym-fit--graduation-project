@@ -1,0 +1,102 @@
+<div class="main-content">
+  <div class="">
+    <a class="btn btn-danger" [routerLink]="'/Products/Add'"> Add New Product</a>
+    
+  </div>
+  <div class="card">
+    <div class="card-body">
+      <table datatable [dtOptions]="dtOptions" [dtTrigger]="dtTrigger" class="table table-bordered table-hover table-striped table-sm text-center">
+        <thead class="thead-dark center">
+          <tr>
+            <th>
+              Name
+            </th>
+            <th>
+              Description
+            </th>
+            <th>
+              Price
+            </th>
+            <th>
+              Category
+            </th>
+            <th>
+              Expiry Date
+            </th>
+            <th>
+              Deleted
+            </th>
+            <th>
+              Actions
+            </th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let product of products">
+            <td>
+              {{product.Name}}
+            </td>
+            <td>
+              {{product.Description}}
+            </td>
+            <td>
+              {{product.Price}}
+            </td>
+            <td>
+              {{getCatName(product.CategoryID)}}
+            </td>
+            <td>
+              {{product.ExpiryDate | date}}
+            </td>
+            <td>
+              {{product.Deleted ? "Deleted": ""}}
+            </td>
+            <td>
+              <div>
+                <button class="icon" style="background-color: cadetblue;" 
+                  (click)="viewImage(product.ProductImage)" title="View Image">
+                    <i class="fa fa-eye" aria-hidden="true"></i></button>
+
+                <button [routerLink]="['/Products/Edit',  product.ID]" class="icon btn-primary" title="Edit">
+                  <i class="fa fa-pencil-square-o" aria-hidden="true"></i></button>
+
+           
+
+                <button *ngIf="product.Deleted" class="icon btn-success"
+                  mwlConfirmationPopover
+                  popoverTitle="Revert Confirmation"
+                  popoverMessage="Are you sure you want to Restore this Product ?"
+                  placement="left"
+                  (confirm)="DeleteProduct(product.ID)"
+                  (cancel)="cancelClicked = true"
+                  confirmButtonType='success'
+                  title="Restore">
+                  <i class="fa fa-retweet" aria-hidden="true"></i>
+                </button>
+                <button *ngIf="!product.Deleted" class="icon btn-danger" mwlConfirmationPopover
+                        popoverTitle="Delete Confirmation"
+                        popoverMessage="Are you sure you want to delete this Product ?"
+                        placement="left"
+                        (confirm)="DeleteProduct(product.ID)"
+                        (cancel)="cancelClicked = true"
+                        title="Delete">
+                  <i class="fa fa-trash" aria-hidden="true"></i>
+                </button>
+              </div>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>
+
+<jw-modal id="view-Image">
+  <div class="card" >
+    <div class="card-body text-center">
+      <div >
+        <img [src]="url" width="720" height ="1024">
+      </div>
+    </div>
+  </div>
+</jw-modal>

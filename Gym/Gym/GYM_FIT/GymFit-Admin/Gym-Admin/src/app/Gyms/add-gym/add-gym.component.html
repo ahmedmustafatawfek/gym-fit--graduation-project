@@ -1,0 +1,81 @@
+<div class="main-content">
+  <div class="card">
+    <div class="card-body">
+      <form #gymForm="ngForm" (ngSubmit)="gymForm.form.valid && OnSubmit()">
+        <div class="form-group">
+          <label for="Name">Gym Name *</label>
+          <input id="Name" type="text" class="form-control" 
+            placeholder="Enter Gym Name" 
+            [(ngModel)]="gym.Name" name="Name" #Name="ngModel" required />
+        </div>
+        
+        <div class="invalid" *ngIf="gymForm.submitted && Name.invalid" >
+          <div class="error-msg alert alert-danger" *ngIf="Name.errors.required" >
+            Gym Name is required
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="Address">Gym Address *</label>
+          <input id="Address" type="text" class="form-control" 
+            placeholder="Enter Gym Address" 
+            [(ngModel)]="gym.Address" name="Address" #Address="ngModel" required />
+        </div>
+        
+        <div class="invalid" *ngIf="gymForm.submitted && Address.invalid" >
+          <div class="error-msg alert alert-danger" *ngIf="Address.errors.required" >
+            Gym Address is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="Mobile">Mobile Number *</label>
+          <input id="Mobile" type="text" class="form-control" 
+            placeholder="Enter Gym Number" 
+            [(ngModel)]="gym.Mobile" name="Mobile" #Mobile="ngModel" required />
+        </div>
+        
+        <div class="invalid" *ngIf="gymForm.submitted && Mobile.invalid" >
+          <div class="error-msg alert alert-danger" *ngIf="Mobile.errors.required" >
+            Gym Mobile is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="Description">Gym Description</label>
+          <input id="Description" type="text" class="form-control" 
+            placeholder="Enter Gym Description" 
+            [(ngModel)]="gym.Description" name="Description" #description="ngModel"  />
+        </div>
+
+        <div class="form-group">
+          <label for="Price">Price *</label>
+          <input type="number" id="Price" class="form-control" #Price="ngModel" placeholder="Product Price"
+              name="Price"
+            [(ngModel)]="gym.Price" required/>
+      
+          
+          <div class="invalid" *ngIf="gymForm.submitted && Price.invalid" >
+            <div class="error-msg alert alert-danger" *ngIf="Price.errors.required">
+              Price is required
+            </div>
+          </div>
+        </div>
+        
+
+
+        <div class="form-group">
+          <label>Gym Image: </label>
+          <input  type="file" class="form-control" name="img" accept="image/*" (change)="onSelectFile($event)"  
+          [(ngModel)]="gym.Image" name="image" #img="ngModel"  />
+        </div>
+
+
+        
+        
+        <div class="form-group text-center">
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

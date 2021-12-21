@@ -1,0 +1,100 @@
+<!-- <img href="http://endimension.com/" src="https://i.ibb.co/4p6grGm/endimensiontransparent-bkg.png" alt="Trulli" width="400" height="100"> -->
+
+<!-- <style>
+body {
+  background-image: url("https://images.unsplash.com/photo-1594737626072-90dc274bc2bd?ixid=MnwxMjA3fDF8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=80");
+
+    /* Full height */
+  height: 300%; 
+
+  /* Center and scale the image nicely */
+  background-position: left top ;
+  background-repeat: no-repeat;
+  background-size: cover;
+    
+}
+</style> -->
+<body class="row" style="background:transparent url('assets/images/login.jpg') no-repeat center center /cover">
+  <div class="col-md-4">
+    <div class="container">
+      <div id="login-row" class="row justify-content-end align-items-end">
+          <div id="login-column" class="col-md-50">
+              
+            <div class="about">
+              <h2>GymFit help you to find Gym that suitable for you</h2> 
+              <h2>You can buy your supplements, sportswear and machines ONLINE!</h2> 
+              <h2>And you can subscribe in nutrition and training program with professional coaches</h2>
+              <h2>Good Sports platform include all sports need like coshing and nutrition and courses for any person care for his health like coaching</h2>
+            </div>
+              
+              
+              <!-- <div class="box">
+              <br> 
+                  
+                  <div class="about">
+                    <h2>GymFit help you to find Gym that suitable for you</h2> 
+                    <h2>You can buy your supplements, sportswear and machines ONLINE!</h2> 
+                    <h2>And you can subscribe in nutrition and training program with professional coaches</h2>
+                    <h2>Good Sports platform include all sports need like coshing and nutrition and courses for any person care for his health</h2>
+                  </div>
+                  
+              </div> -->
+          </div>
+      </div>
+    </div>
+  </div>
+  <div class="col-md-6">
+    <div class="container">
+      <div id="login-row" class="row justify-content-end align-items-end">
+          <div id="login-column" class="col-md-50">
+              
+          
+              
+              
+              <div class="box">
+                <!-- <span class="login-msg-above"> <h2>Welcome Tool Login</h2></span> -->
+              <br> 
+                  
+                  
+                  <div class="shape1"></div>
+                  <div class="shape2"></div>
+                  <div class="shape3"></div>
+                  <div class="shape4"></div>
+                  <div class="shape5"></div>
+                  <div class="shape6"></div>
+                  <div class="shape7"></div>
+                  <div class="float">
+                      <form #loginForm="ngForm" class="form" (ngSubmit)="email.valid && password.valid && OnSubmit()">
+                          <div class="form-group">
+                              <label for="email" class="text-white">Email:</label><br>
+                              <input type="text" name="email" id="email" class="form-control"
+                                #email="ngModel" [(ngModel)]="model.email" pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" required>
+                          <div class="error-msg alert alert-danger" *ngIf="!email.valid && loginForm.submitted">
+                            Email is invalid
+                          </div>
+                          </div>
+                          <div class="form-group">
+                              <label for="password" class="text-white">Password:</label><br>
+                              <input type="password" name="password" id="password" class="form-control"
+                              #password="ngModel" [(ngModel)]="model.password" required>
+                              <div class="error-msg alert alert-danger" *ngIf="errors.login">
+                                {{errors.login}}
+                              </div>
+                          </div>
+                          <div class="form-group row">
+                              <div class="col">
+                                <input type="submit" name="submit" class="btn btn-info btn-md" value="Login">
+                              </div>
+                              <div class="col">
+                                <a type="button" class="btn btn-success" [routerLink]="'/Register'"> Register</a>
+                              </div>
+                          </div>
+                      </form>
+                  </div>
+              </div>
+          </div>
+      </div>
+    </div>
+  </div>
+
+</body>

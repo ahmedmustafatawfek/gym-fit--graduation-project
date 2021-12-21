@@ -1,0 +1,63 @@
+<div class="main-content">
+  <div class="card">
+    <div class="card-body">
+      <form #programForm="ngForm" (ngSubmit)="programForm.form.valid&& OnSubmit()">
+        <div class="form-group">
+          <label for="Name">Program Name *</label>
+          <input id="Name" type="text" class="form-control" 
+            placeholder="Enter Program Name" 
+            [(ngModel)]="program.Name" name="Name" #Name="ngModel" required />
+        </div>
+        
+        <div class="invalid" *ngIf="programForm.submitted && Name.invalid" >
+          <div class="error-msg alert alert-danger" *ngIf="Name.errors.required" >
+            Program Name is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="Price">Price *</label>
+          <input type="number" id="Price" class="form-control" #Price="ngModel" placeholder="Product Price"
+              name="Price"
+            [(ngModel)]="program.Price" required/>
+      
+          
+          <div class="invalid" *ngIf="programForm.submitted && Price.invalid" >
+            <div class="error-msg alert alert-danger" *ngIf="Price.errors.required">
+              Price is required
+            </div>
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="Description">Meal Description</label>
+          <input id="Description" type="text" class="form-control" 
+            placeholder="Enter Product Description" 
+            [(ngModel)]="program.MealDescription" name="Description" #description="ngModel"  />
+        </div>
+
+        <div class="form-group">
+          <label for="ExcercisesCount">Excercises Count</label>
+          <input type="number" id="ExcercisesCount" class="form-control" #ExcercisesCount="ngModel"
+            placeholder="Excercises Count" name="ExcercisesCount"
+            [(ngModel)]="program.ExcercisesCount"/>
+      
+        </div>
+        
+        <div class="form-group">
+          <label for="Calories">Calories</label>
+          <input type="number" id="Calories" class="form-control" #Calories="ngModel"
+            placeholder="Enter Calories" name="Calories"
+            [(ngModel)]="program.Calories"/>
+      
+        </div>
+
+        
+        
+        <div class="form-group text-center">
+          <button type="submit" class="btn btn-primary">Create</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

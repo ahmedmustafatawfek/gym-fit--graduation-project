@@ -1,0 +1,41 @@
+<div class="main-content">
+  <div class="card">
+    <div class="card-body">
+      <form #userForm="ngForm" (ngSubmit)="userForm.form.valid&& OnSubmit()">
+        <div class="form-group">
+          <label for="Username">Username *</label>
+          <input id="Username" type="text" class="form-control" 
+            placeholder="Enter Username" 
+            [(ngModel)]="user.name" name="Username" #Username="ngModel" required />
+        </div>
+        
+        <div class="invalid" *ngIf="userForm.submitted && Username.invalid" >
+          <div class="error-msg alert alert-danger" *ngIf="Username.errors.required" >
+            Username is required
+          </div>
+        </div>
+
+        <div class="form-group">
+          <label for="email">Email *</label>
+          <input type="email" id="email" class="form-control" #email="ngModel" placeholder="Enter Email"
+                 pattern="^[\w-\.]+@([\w-]+\.)+[\w-]{2,4}$" name="email"
+                 [(ngModel)]="user.email" required />
+      
+          
+          <div class="invalid" *ngIf="userForm.submitted && email.invalid" >
+            <div class="error-msg alert alert-danger" *ngIf="!email.valid">
+              Email is not valid
+            </div>
+            <div class="error-msg alert alert-danger" *ngIf="email.errors.required">
+              Email is required
+            </div>
+          </div>
+        </div>
+          
+        <div class="form-group text-center">
+          <button type="submit" class="btn btn-primary">Edit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>

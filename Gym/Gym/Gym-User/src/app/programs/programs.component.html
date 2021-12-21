@@ -1,0 +1,20 @@
+<div class="container" style="width: 50%;"  *ngFor="let program of programs">
+  <br>
+  <div class="card text-center">
+    <div class="card-body">
+      <h2 class="card-title">{{program.Name}}</h2>
+      <div class="row">
+        <div class="col-md-9">
+          <p class="card-text">
+            {{program.MealDescription}}
+          </p>
+          <p>Calories: {{program.Calories}}</p>
+          <button class="btn btn-primary" (click)="AddToCart(product.ID)"><i class="fa fa-cart-plus"></i> Subscribe</button>
+        </div>
+        <div class="col-md-3">
+          <h5>{{program.Price}} EGP/3 Months</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

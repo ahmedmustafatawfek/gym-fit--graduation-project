@@ -1,0 +1,32 @@
+<div class="main-content">
+  <div class="card">
+    <div class="card-body">
+      <form #categoryForm="ngForm" (ngSubmit)="categoryForm.form.valid&& OnSubmit()">
+        <div class="form-group">
+          <label for="CategoryName">Category Name</label>
+          <input id="CategoryName" type="text" class="form-control" 
+            placeholder="Enter Category English Name" 
+            [(ngModel)]="category.Name" name="CategoryName" #CatName="ngModel" required />
+        </div>
+        
+        <div class="invalid" *ngIf="categoryForm.submitted && CatName.invalid" >
+          <p *ngIf="CatName.errors.required"  style="color: red;">Category Name is required</p>
+        </div>
+
+ 
+        <div class="form-group">
+          <label for="Description">Category Description</label>
+          <input id="Description" type="text" class="form-control" 
+            placeholder="Enter Category Description" 
+            [(ngModel)]="category.Description" name="Description" #description="ngModel"  />
+        </div>
+
+
+
+        <div class="form-group text-center">
+          <button type="submit" class="btn btn-primary">Edit</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
